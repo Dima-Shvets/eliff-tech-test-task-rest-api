@@ -1,13 +1,13 @@
-const { Contact } = require('../../models');
+const { Bank } = require('../../models');
 
 const getBankById = async (req, res, next) => {
-  const contact = await Contact.findById(req.params.contactId);
+  const bank = await Bank.findById(req.params.bankId);
 
-  if (!contact) {
+  if (!bank) {
     return res.status(404).json({ status: "error", code: 404, message: "Not found"})
   }
 
-  res.json({ status: "success", code: 200, payload: {contact} })
+  res.json({ status: "success", code: 200, payload: {bank} })
 }
 
 module.exports = getBankById;

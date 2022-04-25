@@ -1,13 +1,12 @@
-const { Contact } = require('../../models');
+const { Bank } = require('../../models');
 
 const deleteBank = async (req, res, next) => {
-  const removedContact = await Contact.findByIdAndRemove(req.params.contactId);
-  console.log('removed contact', removedContact)
+  const removedBank = await Bank.findByIdAndRemove(req.params.bankId);
 
-  if (!removedContact) {
+  if (!removedBank) {
     res.status(404).json({ status:"error", code:404, message: "Not found"})
   }
-  res.json({ status: "success", code: 200, payload: removedContact})
+  res.json({ status: "success", code: 200, payload: {bank: removedBank}})
 }
 
 module.exports = deleteBank;

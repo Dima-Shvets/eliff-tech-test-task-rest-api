@@ -1,12 +1,12 @@
-const { Contact } = require('../../models');
+const { Bank } = require('../../models');
 
 const putBank = async (req, res, next) => {
-  const updatedContact = await Contact.findByIdAndUpdate(req.params.contactId, req.body, {new:true});
+  const updatedBank = await Bank.findByIdAndUpdate(req.params.bankId, req.body, {new:true});
 
-  if (!updatedContact) {
+  if (!updatedBank) {
     res.status(404).json({ status: "error", code:404, message: "Not found"})
   }
-  res.json({ status: "success", code: 200, payload: updatedContact });
+  res.json({ status: "success", code: 200, payload: {bank: updatedBank} });
 }
 
 module.exports = putBank;
